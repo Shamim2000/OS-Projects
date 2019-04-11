@@ -1,0 +1,20 @@
+#include<stdio.h>
+	#define executed 1
+	#define not_exec 0
+	//structure for a process
+	typedef struct process
+	{
+	    int arr;        //arrival time
+	    int bt;         //burst time
+	    int wt;		//waiting time
+	    int ft;		//finish time
+	    int status;
+	} process;
+	
+
+	void sjf(process *pr,int n,float *awt,float *atat);
+	int shortestProcess(process *pr,int n,int ct);
+	int sumArray(int *arr,int n);
+	void dispArray(int *arr,int n);
+	
+
