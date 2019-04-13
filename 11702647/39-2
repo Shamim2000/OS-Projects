@@ -46,14 +46,4 @@
 			pr[i].status=not_exec;
 		}
 		printf("\nThe order of execution of processes is:");
-		for(i=0;i<n;i++)
-		{
-		    //printf("spi=%d",spi);
-			spi=shortestProcess(pr,n,ct);
-			printf("P%d\t",spi+1);
-			pr[spi].wt=ct-pr[spi].arr;   //waiting time of executed process=(current time) - (it's arrival time)
-			//printf("wt=%d",pr[spi].wt);
-			ct+=pr[spi].bt;		//updating current time
-			pr[spi].ft=ct-pr[spi].arr;		//finish time of the executed process
-			pr[spi].status=executed;
-	}
+		
