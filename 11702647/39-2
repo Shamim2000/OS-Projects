@@ -17,7 +17,7 @@
 	int sumArray(int *arr,int n);
 	void dispArray(int *arr,int n);
 	
-
+5
 	int main()
 	{
 	    int n,i;
@@ -44,6 +44,60 @@
 		for(i=0;i<n;i++)
 		{
 			pr[i].status=not_exec;
-		}
+		} 
 		printf("\nThe order of execution of processes is:");
-		
+		for(i=0;i<n;i++)
+		{
+		    //printf("spi=%d",spi);
+			spi=shortestProcess(pr,n,ct);
+			printf("P%d\t",spi+1);
+			pr[spi].wt=ct-pr[spi].arr;   //waiting time of executed process=(current time) - (it's arrival time)
+			//printf("wt=%d",pr[spi].wt);
+			ct+=pr[spi].bt;		//updating current time
+			pr[spi].ft=ct-pr[spi].arr;		//finish time of the executed process
+			pr[spi].status=executed;
+	
+
+	
+
+		}
+	
+
+		for(i=0;i<n;i++)
+		{
+			(*awt)+=pr[i].wt;
+			(*atat)+=pr[i].ft;
+		}
+		*awt=*awt/n;
+		*atat=*atat/n;
+		/*for debugging
+		printf("\nWaiting Times:");
+		for(i=0;i<n;i++)
+		{
+			printf("%d\t",pr[i].wt);
+		}
+	
+		printf("\nturnaround Times:");
+		for(i=0;i<n;i++)
+		{
+			printf("%d\t",pr[i].ft);
+		}
+	*/
+	}
+	//returns the index of shortest process arrived beore the current time ct
+	int shortestProcess(process *pr,int n,int ct)
+	{
+		int i,min_bt=99999,min_index=-1;
+		for(i=0;i<n;i++)
+		{
+			if(pr[i].status==not_exec && pr[i].arr<=ct)
+			{
+				if(pr[i].bt<min_bt)
+				{
+				    min_bt=pr[i].bt;
+					min_index=i;
+				}
+			}
+		}
+		return min_index;
+	}
