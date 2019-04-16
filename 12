@@ -61,14 +61,7 @@ int main()
   }
   if(cnt==r)
   {
-  for(j=0;j<r;j++)
-  {
-  avail[j]+=alloc[i][j];
-  }
-  printf("p%d\t",i+1);  p[i]=1;     cntt++;
-  }
- }
- } k++;
+
  }
  if(cntt<n-1)
  {
